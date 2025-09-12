@@ -46,6 +46,15 @@ spec:
       - echo "--authentication-token-webhook-config-file=/var/snap/k8s/common/args/conf.d/k8s-auth-token-webhook.conf" >> /var/snap/k8s/common/args/kube-apiserver
       - sudo snap restart k8s.kube-apiserver
     {{- end }}
+    {{- if and .Values.proxy .Values.proxy.httpProxy }}
+    httpProxy: {{ .Values.proxy.httpProxy }}
+    {{- end }}
+    {{- if and .Values.proxy .Values.proxy.httpsProxy }}
+    httpsProxy: {{ .Values.proxy.httpsProxy }}
+    {{- end }}
+    {{- if and .Values.proxy .Values.proxy.noProxy }}
+    noProxy: {{ .Values.proxy.noProxy }}
+    {{- end }}
     controlPlane:
       cloudProvider: external
       {{- if .Values.addons.openstack.k8sKeystoneAuth.enabled }}
