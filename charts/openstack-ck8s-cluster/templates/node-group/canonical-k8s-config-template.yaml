@@ -10,6 +10,15 @@
 {{- $nodeGroup := index . 1 }}
 template:
   spec:
+    {{- if and $ctx.Values.proxy $ctx.Values.proxy.httpProxy }}
+    httpProxy: {{ $ctx.Values.proxy.httpProxy }}
+    {{- end }}
+    {{- if and $ctx.Values.proxy $ctx.Values.proxy.httpsProxy }}
+    httpsProxy: {{ $ctx.Values.proxy.httpsProxy }}
+    {{- end }}
+    {{- if and $ctx.Values.proxy $ctx.Values.proxy.noProxy }}
+    noProxy: {{ $ctx.Values.proxy.noProxy }}
+    {{- end }}
     controlPlane:
       cloudProvider: external
     extraKubeletArgs:

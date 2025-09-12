@@ -186,6 +186,14 @@ addons:
     # enabled: Enable k8s dashboard or not (boolean)
     enabled: False
 
+# proxy: Proxy configurations (dictionary)
+# proxy:
+  # httpProxy: HTTP Proxy configuration (string)
+  # httpProxy:
+  # httpsProxy: HTTPS Proxy configuration (string)
+  # httpsProxy:
+  # noProxy: No Proxy configuration (string)
+  # noProxy:
 
 ###########################################
 # Dependency charts values.yaml overrides #
